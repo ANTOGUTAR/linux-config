@@ -18,6 +18,7 @@
     bu = branch-uploaded
     caa = commit -a --amend --no-edit
     caam = commit -a --amend -m
+    cae = commit --amend --edit
     cam = commit -a -m
     camb = !git commit -a -m 'Branch: '$(git current-branch)
     cdf = clean -df
