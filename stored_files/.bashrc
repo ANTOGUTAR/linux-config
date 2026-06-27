@@ -3,18 +3,12 @@
 # for examples
 
 # This section adds additional directories to the $PATH.
-export PATH=~/bin:"$PATH"
 export PATH=~/scripts:"$PATH"
-export PATH=~/repos/depot_tools:"$PATH"
-export PATH=~/repos/blink/Tools/Scripts:"$PATH"
-export PATH=~/bin/google_appengine:"$PATH"
+export PATH=/mnt/ssd/repos/depot_tools:"$PATH"
 export PATH=~/.local/bin:"$PATH"
+export PATH=/usr/bin:"$PATH"
 
-export GYP_CHROMIUM_NO_ACTION=1
 export EDITOR="vim"
-export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
-export TESTURL="file://`echo ~/tests/test.html`"
-export GOPATH=~/repos/gopath
 
 # https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#verify-that-your-default-file-permissions-umask_setting-is-correct
 umask 022
@@ -59,21 +53,8 @@ export TERM=xterm-256color
 HOST=$(hostname)
 PS1="\[\e[1;31m\]${debian_chroot:+($debian_chroot)}\[\e[m\]\[\e[0;32m\][\t]\[\e[m\]\[\e[1;30m\]$HOST:\w\n$\[\e[m\] "
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# Updates Ctrl-R to use fzf.
+which fzf > /dev/null && eval "$(fzf --bash)"
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
